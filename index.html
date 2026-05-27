@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jorge Luis Guevara Diaz</title>
+  <meta name="description" content="Personal website of Jorge Luis Guevara Diaz: research, professional profile, and personal interests.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffef9;
+      --ink: #152120;
+      --muted: #4b5f5c;
+      --accent: #0f766e;
+      --accent-2: #db6f00;
+      --line: #d6d0c0;
+      --shadow: 0 12px 24px rgba(21, 33, 32, 0.08);
+      --radius: 16px;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at 15% 0%, #ece7d8 0%, var(--bg) 40%, #f4f1e8 100%);
+      color: var(--ink);
+      font-family: Manrope, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+
+    .wrap {
+      width: min(100% - 2rem, var(--max));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--paper) 84%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .archive-link {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 3.5rem 0 2rem;
+      animation: reveal 700ms ease-out both;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-photo {
+      justify-self: center;
+      width: min(100%, 320px);
+      aspect-ratio: 1 / 1;
+      border-radius: 22px;
+      object-fit: cover;
+      border: 4px solid var(--paper);
+      box-shadow: var(--shadow);
+      transform: rotate(-1deg);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .chip {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fefcf5;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #29403d;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.2rem;
+    }
+
+    .links a {
+      display: inline-block;
+      padding: 0.5rem 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .links a:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      padding: 0 0 3rem;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.1rem 1.2rem;
+      animation: reveal 700ms ease-out both;
+      animation-delay: var(--delay, 0ms);
+    }
+
+    .card h2 {
+      margin: 0 0 0.6rem;
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+
+    .card p,
+    .card li { color: #324846; }
+
+    .research { grid-column: span 7; --delay: 80ms; }
+    .positions { grid-column: span 5; --delay: 140ms; }
+    .personal { grid-column: span 5; --delay: 200ms; }
+    .highlights { grid-column: span 7; --delay: 260ms; }
+
+    ul { margin: 0.4rem 0 0; padding-left: 1.15rem; }
+
+    .timeline li { margin-bottom: 0.45rem; }
+    .timeline strong { color: #1e3532; }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.55rem;
+    }
+
+    .impact-item {
+      border: 1px dashed #cabf9f;
+      border-radius: 12px;
+      padding: 0.7rem;
+      background: #fdf9ee;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1rem 0 2.5rem;
+      color: #506764;
+      font-size: 0.94rem;
+    }
+
+    .note {
+      margin-top: 0.35rem;
+      font-size: 0.9rem;
+      color: #5e6f6d;
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 2.4rem;
+      }
+
+      .hero-photo { width: min(100%, 260px); }
+      .research, .positions, .personal, .highlights { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">Jorge Luis Guevara Díaz, Ph.D.</div>
+      <a class="archive-link" href="archive/index-legacy.html">Archived</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-label="Introduction">
+      <div>
+        <p>
+          I am a machine learning researcher and applied scientist with a trajectory across academia and industry.
+          My work has evolved from fuzzy sets, kernels, and uncertainty modeling to interpretable AI for energy,
+          and more recently to AI systems behind weather, simulation, and decision support applications.
+        </p>
+        <p>
+          In recent years, I have also worked on weather generators and weather downscaling using foundation models,
+          including diffusion and GAN-based approaches for realistic simulation and forecasting workflows.
+        </p>
+
+        <div class="chips" aria-label="Quick profile tags">
+          <span class="chip">machine learning</span>
+          <span class="chip">generative AI</span>
+          <span class="chip">AI foundations</span>
+          <span class="chip">Applied Data Science</span>
+          <span class="chip">algorithms</span>
+        </div>
+
+      </div>
+
+      <img class="hero-photo" src="Screenshot_20260525_190557_LinkedIn.jpg" alt="Portrait of Jorge Luis Guevara Diaz">
+    </section>
+
+    <section class="grid" aria-label="Main sections">
+      <article class="card research">
+        <h2>Research Interests</h2>
+        <p>
+          My research path started with speech processing and signal representations, then moved into
+          fuzzy set similarity and kernel-based machine learning with a focus on uncertainty-aware modeling.
+        </p>
+        <p>
+          Through academic and industrial collaboration, this evolved into interpretable machine learning for
+          high-impact domains such as energy analytics, and later into applied AI innovations reflected in
+          patents for weather forecasting, simulation, and operational decision support. More recently, my work has included
+          weather generators, weather downscaling with foundation models,
+          and generative approaches based on diffusion models and GANs for robust environmental AI systems.
+        </p>
+        <p>
+          My current interests include practical AI, AI foundations, and learning how to deploy AI systems
+          efficiently, focusing on the core principles and technologies that combine scientific rigor with
+          deployable systems.
+        </p>
+      </article>
+
+      <article class="card positions">
+        <h2>Recent Positions</h2>
+        <ul class="timeline">
+          <li><strong>Senior Applied Scientist</strong>, Microsoft (2026).</li>
+          <li><strong>Visiting Professor</strong>, Postgraduate Program in Data Science, UNI.</li>
+          <li><strong>Research Staff Member</strong>, IBM Research (2020 to 2025).</li>
+          <li><strong>Research Scientist</strong>, IBM Research (2016 to 2020).</li>
+          <li><strong>Research Internship</strong>, LITIS Labs, INSA Rouen, France (October 2012 to September 2013).</li>
+          <li><strong>PhD Student</strong> at Institute of Mathematics and Statistics, University of Sao Paulo, Brazil.</li>
+        </ul>
+      </article>
+
+      <article class="card personal">
+        <h2>Personal and Hobbies</h2>
+        <p>
+          Outside work, I enjoy traveling, playing guitar, and spending time with my kids and family.
+          These moments keep me grounded and energize how I think about research, creativity, and collaboration.
+        </p>
+      </article>
+
+      <article class="card highlights">
+        <h2>Scholar, Patents, and Profiles</h2>
+        <div class="impact-grid">
+          <div class="impact-item">
+            <strong>Professional Profiles</strong><br>
+            Keep in touch through my professional channels.
+            <a href="https://www.linkedin.com/in/jorge-luis-guevara-diaz-48ab6520" target="_blank" rel="noreferrer">LinkedIn</a>
+            and
+            <a href="https://github.com/jorjasso" target="_blank" rel="noreferrer">GitHub</a>.
+          </div>
+          <div class="impact-item">
+            <strong>Google Scholar</strong><br>
+            Publications spanning fuzzy sets, kernels, interpretable ML, and work on weather generators and weather downscaling systems.
+            <a href="https://scholar.google.com/citations?hl=es&user=LPaWmEUAAAAJ" target="_blank" rel="noreferrer">View profile</a>.
+          </div>
+          <div class="impact-item">
+            <strong>Google Patents</strong><br>
+            Patents in AI platforms, including granted and published work.
+            <a href="https://patents.google.com/?inventor=jorge+luis+guevara+diaz&oq=jorge+luis+guevara+diaz" target="_blank" rel="noreferrer">View patents</a>.
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>Contact: <a href="mailto:jorjasso@vision.ime.usp.br">jorjasso@vision.ime.usp.br</a></div>
+      <div class="note">Last refreshed: May 2026</div>
+    </div>
+  </footer>
+</body>
+</html>
